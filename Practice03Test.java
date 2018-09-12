@@ -1,3 +1,8 @@
+/*
+ *@author Cori Posadas
+ *cs245 Practice Assignment 3
+*/
+
 import java.util.Random;
 
 
@@ -53,12 +58,35 @@ public class Practice03Test {
 
 
 	public int find_min_iterative () {
-		// TODO: Fill in this iterative function.
+		int min = 0;								//O(1)
+		for (int i = 1; i < arr.length; i++){		//O(1)
+			if (arr[min] > arr[i]){					//O(n)
+				min = i;							//O(1)
+			}
+		}
+		return min;									//O(1)
 	}
 
-
 	public int find_min_recursive () {
-		// TODO: Fill in this recursive function.
+		
+		return find_min_recursive_helper(arr, 0);		//O(1)
+	}
+
+	public int find_min_recursive_helper (double [] array, int index) {
+
+		if (index == array.length - 1){								//O(1)
+			return index;											//O(1)
+		}
+
+		int min = find_min_recursive_helper(array, index + 1);		//O(n)
+
+		if(array[index] < array[min]){								//O(1)
+			return index;											//O(1)
+		}
+		else {
+			return min;												//O(1)
+		}
+
 	}
 
 
